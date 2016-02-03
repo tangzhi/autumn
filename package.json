@@ -1,0 +1,25 @@
+{
+  "name": "autumn",
+  "version": "1.0.0",
+  "description": "api server base on express",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "start": "DEBUG='*' nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tangzhi@asiainfo.com",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "csurf": "^1.8.3",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^4.0.0",
+    "nodemon": "^1.8.1"
+  }
+}
