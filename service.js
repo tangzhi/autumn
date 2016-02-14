@@ -17,7 +17,7 @@ router.use(function timeLog(req, res, next) {
 router
   .route('/auth')
   // auth model create operate
-  .post(function createAuth(req, res) {
+  .post(function userLogin(req, res) {
     var user = {};
     var path = join(__dirname, 'web', 'service', req.path);
     var content = read(path, { encoding: 'utf8' });

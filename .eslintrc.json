@@ -3,5 +3,8 @@
     "rules": {
       "comma-dangle": [2, "never"],
       "no-console": 0
+    },
+    "env": {
+      "mocha": true
     }
 }
