@@ -6,6 +6,11 @@ var express = require('express');
 var router = express.Router();
 /* eslint-enable */
 
+// debug content begin
+var debugPath = join(__dirname, 'web', 'service', 'auth');
+var debugAuthContent = read(debugPath, { encoding: 'utf8' });
+// debug content end
+
 exports = module.exports = router;
 
 router.use(function timeLog(req, res, next) {
@@ -19,8 +24,6 @@ router
   // auth model create operate
   .post(function userLogin(req, res) {
     var user = {};
-    var path = join(__dirname, 'web', 'service', req.path);
-    var content = read(path, { encoding: 'utf8' });
 
     debug('/auth post: %s', JSON.stringify(req.body));
     if (!req.body || req.body.name !== 'admin' || req.body.password !== '123456') {
@@ -38,16 +41,13 @@ router
     req.session.isAuth = true;
     /* eslint-enable no-param-reassign */
 
-    res.end(content);
+    res.end(debugAuthContent);
   })
   .get(function fetchAuth(req, res) {
-    var path = join(__dirname, 'web', 'service', req.path);
-    var content = read(path, { encoding: 'utf8' });
-
     debug('request.session:%s', JSON.stringify(req.session));
 
     if (req.session && req.session.isAuth === true) {
-      res.end(content);
+      res.end(debugAuthContent);
     } else {
       res.json({ auth: false }).end();
     }
