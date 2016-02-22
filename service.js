@@ -28,6 +28,8 @@ router
         auth: false,
         login_err_count: req.body.login_err_count ? (req.body.login_err_count + 1) : 1
       }).end();
+      // regenerate session
+      req.session.regenerate(function nothing() {});
       return;
     }
 
