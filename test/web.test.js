@@ -1,6 +1,6 @@
 var app = require('../index');
 var request = require('supertest')(app);
-var should = require('should');
+var should = require('chai').should();
 var join = require('path').join;
 var read = require('fs').readFileSync;
 

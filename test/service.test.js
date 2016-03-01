@@ -2,7 +2,7 @@
 var app = require('../index');
 var request = require('supertest')(app);
 var agent = require('supertest').agent(app);
-var should = require('should');
+var should = require('chai').should();
 var join = require('path').join;
 var read = require('fs').readFileSync;
 var root = '/service';
@@ -17,7 +17,7 @@ describe('/service/auth', function testAuth() {
       .send({})
       .end(function end(err, res) {
         should.not.exist(err);
-        res.status.should.be.Number().and.equal(200);
+        res.status.should.equal(200);
         done();
       });
   });
@@ -79,7 +79,7 @@ describe('/service/auth', function testAuth() {
           .end(function end(err, res) {
             should.not.exist(err);
             should.exist(res.headers['set-cookie']);
-            res.headers['set-cookie'][0].should.startWith('leaf.sid=');
+            res.headers['set-cookie'][0].should.match(/^leaf.sid=/);
             done();
           });
       });
